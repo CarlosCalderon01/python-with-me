@@ -1,0 +1,40 @@
+¡Por supuesto! El principio de "composición sobre herencia" es una filosofía de diseño en la
+programación orientada a objetos que sugiere que es preferible construir nuevas
+funcionalidades a través de la composición de objetos existentes en lugar de depender en
+gran medida de la herencia. Este principio promueve la creación de objetos más modulares,
+flexibles y reutilizables.
+
+En lugar de heredar directamente de una clase base para obtener sus propiedades y
+comportamientos, el enfoque de composición implica que un objeto contenga instancias de
+otros objetos (componentes) y utilice sus funcionalidades para lograr un comportamiento
+deseado. Aquí hay algunas razones por las que la composición puede ser preferible sobre la
+herencia:
+
+Flexibilidad:
+
+La composición permite una mayor flexibilidad en la combinación de comportamientos.
+Puedes cambiar y ajustar componentes individuales sin afectar la estructura completa.
+
+Menos Acoplamiento:
+
+Al depender de interfaces y no de implementaciones específicas, los objetos se acoplan
+de manera más débil. Esto hace que los cambios en un componente tengan menos
+impacto en otros.
+
+Reutilización Mejorada:
+
+Puedes reutilizar componentes en múltiples contextos. Un mismo componente puede
+ser utilizado por diferentes objetos para cumplir diferentes funciones.
+
+Evitar Problemas de Diseño:
+
+La herencia puede llevar a jerarquías de clases complicadas y difíciles de entender. La composición evita problemas como la "clase base abstracta" o el "problema del diamante" en herencia múltiple.
+Favorecer la Modularidad:
+
+Los objetos más pequeños y especializados son más fáciles de comprender y mantener que clases base grandes y genéricas.
+Facilitar Cambios:
+
+Al cambiar componentes individuales, puedes ajustar el comportamiento del objeto principal sin afectar a todo el sistema.
+Un ejemplo sencillo de composición podría ser un juego en el que tienes un objeto "Jugador" que contiene componentes como "Arma", "Inventario" y "Habilidad". En lugar de heredar diferentes tipos de jugadores, puedes crear diferentes configuraciones de componentes para lograr diferentes tipos de jugadores.
+
+En resumen, el principio de "composición sobre herencia" fomenta el diseño modular y flexible al construir objetos a partir de componentes reutilizables en lugar de crear jerarquías de herencia complejas. Es un enfoque que puede mejorar la mantenibilidad y la escalabilidad de tu código en el largo plazo.
