@@ -159,11 +159,12 @@ Diferencias clave entre diccionario, lista, conjunto y tupla
 
 ## Bibliografia
 
-- RoadMap SH:
-    - https://roadmap.sh/python
+- [Original RoadMap](https://roadmap.sh/python)
 
-- Built-in Functions:
-    - https://docs.python.org/3/library/functions.html
+- [My Progress RoadMap](https://roadmap.sh/python?s=645ab341f3d9ecfa51d91427)
 
-My progress:
-    - https://roadmap.sh/python?s=645ab341f3d9ecfa51d91427
+
+- https://docs.python.org/3/library/functions.html
+- https://docs.python.org/3/tutorial/inputoutput.html
+- https://ellibrodepython.com/leer-archivos-python
+- https://www.freecodecamp.org/espanol/news/python-abre-archivo-como-leer-un-archivo-de-texto-linea-por-linea/
