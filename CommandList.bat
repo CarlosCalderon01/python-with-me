@@ -2,12 +2,12 @@
 echo Seleccione el comando que desea ejecutar:
 echo 1. Delete IMG Repeat
 echo 2. Change Format IMG to (GIF, JPEG)
-echo 3. Change All Name Use Count
+echo 3. Change All Name Use All
 echo 4. Change All Name Start one
 echo 5. Testing
 
 
-set /p opcion="Ingrese el número del comando: "
+set /p opcion="Ingrese el numero del comando: "
 
 if "%opcion%"=="1" (
     python src\Manager\delete-repeat.py

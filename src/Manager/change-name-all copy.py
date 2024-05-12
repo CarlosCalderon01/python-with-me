@@ -1,11 +1,7 @@
 import os
 import time
 
-def obtener_contador():
-    # Obtener la ubicación del script actual
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    # Construir la ruta relativa
-    ruta_contador = os.path.join(script_dir, "z-contador.txt")
+def obtener_contador(ruta_contador):
     try:
         with open(ruta_contador, 'r') as file:
             return int(file.read())
@@ -13,20 +9,15 @@ def obtener_contador():
         return 1
     except ValueError:
         return 1
-    
 
-def guardar_contador(contador):
-        # Obtener la ubicación del script actual
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    # Construir la ruta relativa
-    ruta_contador = os.path.join(script_dir, "z-contador.txt")
+def guardar_contador(ruta_contador, contador):
     with open(ruta_contador, 'w') as file:
         file.write(str(contador))
 
-def cambiar_nombres_carpeta(path_folder, num_contador):
-    contador = num_contador
+def cambiar_nombres_carpeta(ruta_carpeta, ruta_contador):
+    contador = obtener_contador(ruta_contador)
 
-    for ruta_principal, carpetas, archivos in os.walk(path_folder):
+    for ruta_principal, carpetas, archivos in os.walk(ruta_carpeta):
         for nombre_archivo in archivos:
             nombre, formato = os.path.splitext(nombre_archivo)
             ruta_antiguo = os.path.join(ruta_principal, nombre_archivo)
@@ -37,11 +28,15 @@ def cambiar_nombres_carpeta(path_folder, num_contador):
             print(f"Renombrado: {nombre_archivo} a {nombre_nuevo}")
 
             contador += 1
+            guardar_contador(ruta_contador, contador)
+
             time.sleep(0.2)
 
-    guardar_contador(contador)
-
+# Obtener la ubicación del script actual
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# Construir la ruta relativa
+ruta_contador = os.path.join(script_dir, "z-contador.txt")
 
 if __name__ == "__main__":
     ruta_carpeta = input("Introduce la ruta de la carpeta: ")
-    cambiar_nombres_carpeta(ruta_carpeta, obtener_contador())
+    cambiar_nombres_carpeta(ruta_carpeta, ruta_contador)
