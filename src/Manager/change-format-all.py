@@ -1,48 +1,47 @@
 import os
-from PIL import Image
 import time 
+from PIL import Image
 
-def convertir_y_borrar_con_retraso(ruta_carpeta, retraso_segundos):
-    for ruta_principal, carpetas, archivos in os.walk(ruta_carpeta):
-        for nombre_archivo in archivos:
+def change_format_and_delete(folder_path, time_delay):
+    for main_path, sub_folders, files in os.walk(folder_path):
+        for name_file in files:
             # Verificar si el archivo es una imagen y no es JPEG
-            if nombre_archivo.lower().endswith(('.jpg', '.png', '.bmp', '.webp')) and not nombre_archivo.lower().endswith(('.jpeg', '.gif')):
-                ruta_archivo = os.path.join(ruta_principal, nombre_archivo)
+            if name_file.lower().endswith(('.jpg', '.png', '.bmp', '.webp')) and not name_file.lower().endswith(('.jpeg', '.gif')):
+                path_file = os.path.join(main_path, name_file)
 
                 try:
                     # Intentar abrir la imagen
-                    imagen = Image.open(ruta_archivo)
+                    image = Image.open(path_file)
 
                     # Obtener el nombre del archivo sin extensión
-                    nombre_sin_extension, _ = os.path.splitext(nombre_archivo)
+                    name_without_extensión, _ = os.path.splitext(name_file)
 
                     # Convertir la imagen al modo RGB
-                    imagen = imagen.convert('RGB')
+                    image = image.convert('RGB')
 
                     # Crear nueva ruta con extensión JPEG
-                    nueva_ruta_archivo = os.path.join(ruta_principal, f"{nombre_sin_extension}.jpeg")
+                    new_path_file = os.path.join(main_path, f"{name_without_extensión}.jpeg")
 
                     # Guardar la imagen en formato JPEG
-                    imagen.save(nueva_ruta_archivo, "JPEG")
+                    image.save(new_path_file, "JPEG")
                     
                     # Mostrar mensaje indicando el cambio de formato
-                    #print(f"Convertido: {nombre_archivo} a {nombre_sin_extension}.jpeg")
+                    #print(f"Convertido: {name_file} a {name_without_extensión}.jpeg")
 
                     # Borrar el archivo original
-                    os.remove(ruta_archivo)
-                    #print(f"Borrado: {nombre_archivo}")
+                    os.remove(path_file)
+                    #print(f"Borrado: {name_file}")
 
                 except Exception as e:
                     # Imprimir un mensaje si no se puede abrir la imagen
-                    print(f"Error al abrir la imagen {nombre_archivo}: {e}")
+                    print(f"Error opening image {name_file}: {e}")
 
                 # Agregar retraso entre iteraciones
-                time.sleep(retraso_segundos)
+                time.sleep(time_delay)
 
 # Ruta del directorio que contiene las imágenes
-ruta_carpeta_imagenes = ""
+number_time_delay = 1
 
-retraso_segundos = 0.2
-
-# Llamar a la función principal con retraso entre iteraciones
-convertir_y_borrar_con_retraso(ruta_carpeta_imagenes, retraso_segundos)
+if __name__ == "__main__":
+    original_folder_path = input("Enter the path of the original folder: ")
+    change_format_and_delete(original_folder_path, number_time_delay)
