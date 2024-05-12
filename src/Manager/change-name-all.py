@@ -1,47 +1,44 @@
 import os
 import time
 
-def obtener_contador():
-    # Obtener la ubicación del script actual
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    # Construir la ruta relativa
-    ruta_contador = os.path.join(script_dir, "z-contador.txt")
+def get_counter(path_file):
     try:
-        with open(ruta_contador, 'r') as file:
+        with open(path_file, 'r') as file:
             return int(file.read())
     except FileNotFoundError:
         return 1
     except ValueError:
         return 1
     
+def save_counter(path_file, counter):
+    with open(path_file, 'w') as file:
+        file.write(str(counter))
 
-def guardar_contador(contador):
-        # Obtener la ubicación del script actual
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    # Construir la ruta relativa
-    ruta_contador = os.path.join(script_dir, "z-contador.txt")
-    with open(ruta_contador, 'w') as file:
-        file.write(str(contador))
+def change_name_alls_files(original_folder, path_save, num_counter):
 
-def cambiar_nombres_carpeta(path_folder, num_contador):
-    contador = num_contador
+    func_counter = num_counter
 
-    for ruta_principal, carpetas, archivos in os.walk(path_folder):
-        for nombre_archivo in archivos:
-            nombre, formato = os.path.splitext(nombre_archivo)
-            ruta_antiguo = os.path.join(ruta_principal, nombre_archivo)
-            nombre_nuevo = f"{formato[1:]}_{contador}{formato}"
-            ruta_nuevo = os.path.join(ruta_principal, nombre_nuevo)
+    for main_path, sub_folders, files in os.walk(original_folder):
+        for name_file in files:
+            name, format = os.path.splitext(name_file)
+            old_path = os.path.join(main_path, name_file)
+            new_name = f"{format[1:]}_{func_counter}{format}"
+            new_path = os.path.join(main_path, new_name)
 
-            os.rename(ruta_antiguo, ruta_nuevo)
-            print(f"Renombrado: {nombre_archivo} a {nombre_nuevo}")
+            os.rename(old_path, new_path)
+            print(f"Re_Name: {name_file} a {new_name}")
 
-            contador += 1
+            func_counter += 1
             time.sleep(0.2)
 
-    guardar_contador(contador)
+    save_counter(path_save, func_counter)
 
+
+# Obtener la ubicación del script actual
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# Construir la ruta relativa
+path_counter = os.path.join(script_dir, "z-counter.txt")
 
 if __name__ == "__main__":
-    ruta_carpeta = input("Introduce la ruta de la carpeta: ")
-    cambiar_nombres_carpeta(ruta_carpeta, obtener_contador())
+    folders_original_path = input("Enter the path of the original folder: ")
+    change_name_alls_files(folders_original_path, path_counter, get_counter(path_counter))
