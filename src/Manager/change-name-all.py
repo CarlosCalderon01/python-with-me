@@ -1,9 +1,6 @@
 import os
 import time
 
-# Get Acount Number
-
-
 def obtener_contador(ruta_contador):
     try:
         with open(ruta_contador, 'r') as file:
@@ -13,15 +10,9 @@ def obtener_contador(ruta_contador):
     except ValueError:
         return 1
 
-# Save Acount Number
-
-
 def guardar_contador(ruta_contador, contador):
     with open(ruta_contador, 'w') as file:
         file.write(str(contador))
-
-# Change Name Files
-
 
 def cambiar_nombres_carpeta(ruta_carpeta, ruta_contador):
     contador = obtener_contador(ruta_contador)
@@ -41,10 +32,11 @@ def cambiar_nombres_carpeta(ruta_carpeta, ruta_contador):
 
             time.sleep(0.2)
 
+# Obtener la ubicación del script actual
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# Construir la ruta relativa
+ruta_contador = os.path.join(script_dir, "z-contador.txt")
 
-# Rutas
-ruta_carpeta = ""
-ruta_contador = "src\Manager\contador.txt" # ahcer ruta dinamica futuro
-
-# Funcion principal
-cambiar_nombres_carpeta(ruta_carpeta, ruta_contador)
+if __name__ == "__main__":
+    ruta_carpeta = input("Introduce la ruta de la carpeta: ")
+    cambiar_nombres_carpeta(ruta_carpeta, ruta_contador)
