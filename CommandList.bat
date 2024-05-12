@@ -10,13 +10,13 @@ echo 5. Testing
 set /p opcion="Ingrese el número del comando: "
 
 if "%opcion%"=="1" (
-    python src\Manager\DeleteRepeat.py
+    python src\Manager\delete-repeat.py
 ) else if "%opcion%"=="2" (
-    python src\Manager\ChangeAllFormatIMG.py
+    python src\Manager\change-format-all.py
 ) else if "%opcion%"=="3" (
-    python src\Manager\ChangeAllNameAll.py
+    python src\Manager\change-name-all.py
 ) else if "%opcion%"=="4" (
-    python src\Manager\ChangeAllNameOne.py
+    python src\Manager\change-name-one.py
 ) else if "%opcion%"=="5" (
     python Temp\Testing.py
 ) else (
