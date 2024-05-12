@@ -1,7 +1,6 @@
-# pip install Pillow
 import os
 from PIL import Image
-import time  # Importar el módulo time
+import time 
 
 def convertir_y_borrar_con_retraso(ruta_carpeta, retraso_segundos):
     for ruta_principal, carpetas, archivos in os.walk(ruta_carpeta):

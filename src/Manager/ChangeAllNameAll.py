@@ -44,7 +44,7 @@ def cambiar_nombres_carpeta(ruta_carpeta, ruta_contador):
 
 # Rutas
 ruta_carpeta = ""
-ruta_contador = "" # ahcer ruta dinamica futuro
+ruta_contador = "src\Manager\contador.txt" # ahcer ruta dinamica futuro
 
 # Funcion principal
 cambiar_nombres_carpeta(ruta_carpeta, ruta_contador)
